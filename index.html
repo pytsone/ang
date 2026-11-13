@@ -1,40 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>English Adventure</title>
+    <meta
+      name="description"
+      content="Aplikacja edukacyjna dla dzieci do nauki angielskiego w prosty i kolorowy sposób."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="game-shell">
+    <div class="app-shell">
       <header class="topbar">
-        <div>
-          <p class="eyebrow">Animals lesson</p>
+        <div class="title-wrap">
+          <p class="eyebrow">Little English Explorer</p>
           <h1>English Adventure</h1>
         </div>
+
         <div class="stars-box" aria-live="polite">
-          <span class="star-icon">⭐</span>
+          <span class="star-emoji">⭐</span>
           <span id="starsCount">0</span>
         </div>
       </header>
 
-      <main class="game-card">
+      <nav id="categoryTabs" class="category-tabs" aria-label="Kategorie słówek"></nav>
+      <nav id="modeTabs" class="mode-tabs" aria-label="Tryby gry"></nav>
+
+      <main class="game-panel">
         <div class="prompt-box">
-          <p class="prompt-label">Listen and click</p>
-          <h2 id="promptText">Find the animal</h2>
+          <p id="promptLabel" class="prompt-label">Listen & Match</p>
+          <h2 id="promptText">Find the word</h2>
         </div>
 
-        <button id="speakBtn" class="primary-btn" type="button">🔊 Hear it again</button>
+        <button id="actionBtn" class="action-btn" type="button">🔊 Hear it again</button>
 
         <div id="options" class="options" aria-live="polite"></div>
 
         <div id="result" class="result" aria-live="polite">Ready to play!</div>
 
-        <button id="nextBtn" class="secondary-btn hidden" type="button">Next round</button>
+        <button id="nextBtn" class="next-btn hidden" type="button">Next round</button>
       </main>
     </div>
 
