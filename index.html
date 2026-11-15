@@ -3,52 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>English Adventure</title>
-    <meta
-      name="description"
-      content="Aplikacja edukacyjna dla dzieci do nauki angielskiego w prosty i kolorowy sposób."
-    />
+    <meta name="theme-color" content="#fff7d9" />
+    <meta name="description" content="Kolorowa gra do nauki angielskich słówek dla dzieci." />
+    <title>English Adventure — ucz się przez zabawę</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
         <div class="title-wrap">
-          <p class="eyebrow">Little English Explorer</p>
+          <p class="eyebrow">Angielski przez zabawę</p>
           <h1>English Adventure</h1>
         </div>
-
-        <div class="stars-box" aria-live="polite">
-          <span class="star-emoji">⭐</span>
-          <span id="starsCount">0</span>
+        <div class="header-actions">
+          <div class="stars-box" aria-label="Zdobyte gwiazdki" aria-live="polite">
+            <span class="star-emoji" aria-hidden="true">⭐</span>
+            <span id="starsCount">0</span>
+          </div>
+          <button id="resetProgressBtn" class="reset-btn" type="button">Reset gwiazdek</button>
         </div>
       </header>
 
-      <nav id="categoryTabs" class="category-tabs" aria-label="Kategorie słówek"></nav>
-      <nav id="modeTabs" class="mode-tabs" aria-label="Tryby gry"></nav>
+      <section class="selector-section" aria-labelledby="categoryHeading">
+        <h2 id="categoryHeading" class="section-label">Wybierz temat</h2>
+        <nav id="categoryTabs" class="category-tabs" aria-label="Kategorie słówek"></nav>
+      </section>
+
+      <section class="selector-section" aria-labelledby="modeHeading">
+        <h2 id="modeHeading" class="section-label">Wybierz zabawę</h2>
+        <nav id="modeTabs" class="mode-tabs" aria-label="Tryby gry"></nav>
+      </section>
 
       <main class="game-panel">
-        <div class="prompt-box">
-          <p id="promptLabel" class="prompt-label">Listen & Match</p>
-          <h2 id="promptText">Find the word</h2>
+        <div class="difficulty-row">
+          <label for="difficultySelect">Poziom trudności</label>
+          <select id="difficultySelect">
+            <option value="easy">Łatwy · podstawowe słowa</option>
+            <option value="medium">Średni · nowe słowa</option>
+            <option value="hard">Trudny · dłuższe słowa</option>
+          </select>
         </div>
 
-        <button id="actionBtn" class="action-btn" type="button">🔊 Hear it again</button>
+        <div class="prompt-box">
+          <p id="promptLabel" class="prompt-label">Listen & Match</p>
+          <h2 id="promptText">Posłuchaj i wybierz obrazek!</h2>
+        </div>
 
+        <button id="actionBtn" class="action-btn" type="button">🔊 Posłuchaj słowa</button>
         <div id="options" class="options" aria-live="polite"></div>
-
-        <div id="result" class="result" aria-live="polite">Ready to play!</div>
-
-        <button id="nextBtn" class="next-btn hidden" type="button">Next round</button>
+        <div id="result" class="result" role="status" aria-live="polite">Gotowi do zabawy?</div>
+        <button id="nextBtn" class="next-btn hidden" type="button">Następna runda</button>
       </main>
+      <footer class="app-footer">Krótkie rundy · dużo zabawy · zero kar za pomyłki</footer>
     </div>
-
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

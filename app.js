@@ -1,133 +1,6 @@
-const CATEGORIES = {
-  animals: [
-    { id: 'cat', word: 'cat', pl: 'kot', emoji: '🐱' },
-    { id: 'dog', word: 'dog', pl: 'pies', emoji: '🐶' },
-    { id: 'elephant', word: 'elephant', pl: 'słoń', emoji: '🐘' },
-    { id: 'frog', word: 'frog', pl: 'żaba', emoji: '🐸' },
-    { id: 'tiger', word: 'tiger', pl: 'tygrys', emoji: '🐯' },
-    { id: 'bird', word: 'bird', pl: 'ptak', emoji: '🐦' },
-    { id: 'lion', word: 'lion', pl: 'lew', emoji: '🦁' },
-    { id: 'bear', word: 'bear', pl: 'niedźwiedź', emoji: '🐻' },
-    { id: 'monkey', word: 'monkey', pl: 'małpa', emoji: '🐵' },
-    { id: 'rabbit', word: 'rabbit', pl: 'królik', emoji: '🐰' },
-    { id: 'mouse', word: 'mouse', pl: 'mysz', emoji: '🐭' },
-    { id: 'horse', word: 'horse', pl: 'koń', emoji: '🐴' },
-    { id: 'cow', word: 'cow', pl: 'krowa', emoji: '🐮' },
-    { id: 'pig', word: 'pig', pl: 'świnia', emoji: '🐷' },
-    { id: 'sheep', word: 'sheep', pl: 'owca', emoji: '🐑' },
-    { id: 'duck', word: 'duck', pl: 'kaczka', emoji: '🦆' },
-    { id: 'chicken', word: 'chicken', pl: 'kurczak', emoji: '🐔' },
-    { id: 'turtle', word: 'turtle', pl: 'żółw', emoji: '🐢' },
-    { id: 'snake', word: 'snake', pl: 'wąż', emoji: '🐍' },
-    { id: 'penguin', word: 'penguin', pl: 'pingwin', emoji: '🐧' },
-    { id: 'dolphin', word: 'dolphin', pl: 'delfin', emoji: '🐬' },
-    { id: 'whale', word: 'whale', pl: 'wieloryb', emoji: '🐳' },
-    { id: 'fox', word: 'fox', pl: 'lis', emoji: '🦊' },
-    { id: 'zebra', word: 'zebra', pl: 'zebra', emoji: '🦓' },
-    { id: 'giraffe', word: 'giraffe', pl: 'żyrafa', emoji: '🦒' },
-    { id: 'owl', word: 'owl', pl: 'sowa', emoji: '🦉' },
-    { id: 'bee', word: 'bee', pl: 'pszczoła', emoji: '🐝' },
-    { id: 'butterfly', word: 'butterfly', pl: 'motyl', emoji: '🦋' },
-    { id: 'spider', word: 'spider', pl: 'pająk', emoji: '🕷️' },
-    { id: 'hamster', word: 'hamster', pl: 'chomik', emoji: '🐹' }
-  ],
-  colors: [
-    { id: 'red', word: 'red', pl: 'czerwony', emoji: '🔴' },
-    { id: 'blue', word: 'blue', pl: 'niebieski', emoji: '🔵' },
-    { id: 'green', word: 'green', pl: 'zielony', emoji: '🟢' },
-    { id: 'yellow', word: 'yellow', pl: 'żółty', emoji: '🟡' },
-    { id: 'purple', word: 'purple', pl: 'fioletowy', emoji: '🟣' },
-    { id: 'orange', word: 'orange', pl: 'pomarańczowy', emoji: '🟠' },
-    { id: 'pink', word: 'pink', pl: 'różowy', emoji: '💗' },
-    { id: 'black', word: 'black', pl: 'czarny', emoji: '⚫' },
-    { id: 'white', word: 'white', pl: 'biały', emoji: '⚪' },
-    { id: 'brown', word: 'brown', pl: 'brązowy', emoji: '🟤' },
-    { id: 'grey', word: 'grey', pl: 'szary', emoji: '🩶' },
-    { id: 'gold', word: 'gold', pl: 'złoty', emoji: '🌟' },
-    { id: 'silver', word: 'silver', pl: 'srebrny', emoji: '✨' },
-    { id: 'light-blue', word: 'light blue', pl: 'jasnoniebieski', emoji: '🩵' },
-    { id: 'dark-blue', word: 'dark blue', pl: 'ciemnoniebieski', emoji: '🔷' },
-    { id: 'light-green', word: 'light green', pl: 'jasnozielony', emoji: '🟩' },
-    { id: 'dark-green', word: 'dark green', pl: 'ciemnozielony', emoji: '🌲' },
-    { id: 'beige', word: 'beige', pl: 'beżowy', emoji: '🟫' },
-    { id: 'turquoise', word: 'turquoise', pl: 'turkusowy', emoji: '🩱' },
-    { id: 'navy', word: 'navy', pl: 'granatowy', emoji: '🌌' },
-    { id: 'maroon', word: 'maroon', pl: 'bordowy', emoji: '🍷' },
-    { id: 'lime', word: 'lime', pl: 'limonkowy', emoji: '🍋' },
-    { id: 'coral', word: 'coral', pl: 'koralowy', emoji: '🪸' },
-    { id: 'violet', word: 'violet', pl: 'fioletowy', emoji: '🪻' },
-    { id: 'cream', word: 'cream', pl: 'kremowy', emoji: '🍦' },
-    { id: 'teal', word: 'teal', pl: 'morski', emoji: '🦚' },
-    { id: 'magenta', word: 'magenta', pl: 'purpuroworóżowy', emoji: '🌺' },
-    { id: 'peach', word: 'peach', pl: 'brzoskwiniowy', emoji: '🍑' },
-    { id: 'rainbow', word: 'rainbow', pl: 'tęczowy', emoji: '🌈' },
-    { id: 'colorful', word: 'colorful', pl: 'kolorowy', emoji: '🎨' }
-  ],
-  food: [
-    { id: 'apple', word: 'apple', pl: 'jabłko', emoji: '🍏' },
-    { id: 'bread', word: 'bread', pl: 'chleb', emoji: '🍞' },
-    { id: 'milk', word: 'milk', pl: 'mleko', emoji: '🥛' },
-    { id: 'cake', word: 'cake', pl: 'ciasto', emoji: '🍰' },
-    { id: 'banana', word: 'banana', pl: 'banan', emoji: '🍌' },
-    { id: 'pizza', word: 'pizza', pl: 'pizza', emoji: '🍕' },
-    { id: 'orange-fruit', word: 'orange', pl: 'pomarańcza', emoji: '🍊' },
-    { id: 'pear', word: 'pear', pl: 'gruszka', emoji: '🍐' },
-    { id: 'strawberry', word: 'strawberry', pl: 'truskawka', emoji: '🍓' },
-    { id: 'grapes', word: 'grapes', pl: 'winogrona', emoji: '🍇' },
-    { id: 'watermelon', word: 'watermelon', pl: 'arbuz', emoji: '🍉' },
-    { id: 'lemon', word: 'lemon', pl: 'cytryna', emoji: '🍋' },
-    { id: 'peach-fruit', word: 'peach', pl: 'brzoskwinia', emoji: '🍑' },
-    { id: 'cherry', word: 'cherry', pl: 'wiśnia', emoji: '🍒' },
-    { id: 'pineapple', word: 'pineapple', pl: 'ananas', emoji: '🍍' },
-    { id: 'carrot', word: 'carrot', pl: 'marchewka', emoji: '🥕' },
-    { id: 'tomato', word: 'tomato', pl: 'pomidor', emoji: '🍅' },
-    { id: 'potato', word: 'potato', pl: 'ziemniak', emoji: '🥔' },
-    { id: 'cheese', word: 'cheese', pl: 'ser', emoji: '🧀' },
-    { id: 'egg', word: 'egg', pl: 'jajko', emoji: '🥚' },
-    { id: 'rice', word: 'rice', pl: 'ryż', emoji: '🍚' },
-    { id: 'soup', word: 'soup', pl: 'zupa', emoji: '🍲' },
-    { id: 'sandwich', word: 'sandwich', pl: 'kanapka', emoji: '🥪' },
-    { id: 'cookie', word: 'cookie', pl: 'ciastko', emoji: '🍪' },
-    { id: 'ice-cream', word: 'ice cream', pl: 'lody', emoji: '🍦' },
-    { id: 'yogurt', word: 'yogurt', pl: 'jogurt', emoji: '🥣' },
-    { id: 'chicken-food', word: 'chicken', pl: 'kurczak', emoji: '🍗' },
-    { id: 'fish-food', word: 'fish', pl: 'ryba', emoji: '🐟' },
-    { id: 'water', word: 'water', pl: 'woda', emoji: '💧' },
-    { id: 'juice', word: 'juice', pl: 'sok', emoji: '🧃' }
-  ],
-  school: [
-    { id: 'book', word: 'book', pl: 'książka', emoji: '📚' },
-    { id: 'pencil', word: 'pencil', pl: 'ołówek', emoji: '✏️' },
-    { id: 'ruler', word: 'ruler', pl: 'linijka', emoji: '📏' },
-    { id: 'bag', word: 'bag', pl: 'torba', emoji: '🎒' },
-    { id: 'chair', word: 'chair', pl: 'krzesło', emoji: '🪑' },
-    { id: 'teacher', word: 'teacher', pl: 'nauczyciel', emoji: '👩‍🏫' },
-    { id: 'pen', word: 'pen', pl: 'długopis', emoji: '🖊️' },
-    { id: 'pencil-case', word: 'pencil case', pl: 'piórnik', emoji: '🖍️' },
-    { id: 'desk', word: 'desk', pl: 'biurko', emoji: '🧾' },
-    { id: 'board', word: 'board', pl: 'tablica', emoji: '🧑‍🏫' },
-    { id: 'notebook', word: 'notebook', pl: 'zeszyt', emoji: '📓' },
-    { id: 'eraser', word: 'eraser', pl: 'gumka', emoji: '🧽' },
-    { id: 'school', word: 'school', pl: 'szkoła', emoji: '🏫' },
-    { id: 'classroom', word: 'classroom', pl: 'klasa', emoji: '🏫' },
-    { id: 'student', word: 'student', pl: 'uczeń', emoji: '🧑‍🎓' },
-    { id: 'boy', word: 'boy', pl: 'chłopiec', emoji: '👦' },
-    { id: 'girl', word: 'girl', pl: 'dziewczynka', emoji: '👧' },
-    { id: 'paper', word: 'paper', pl: 'papier', emoji: '📄' },
-    { id: 'scissors', word: 'scissors', pl: 'nożyczki', emoji: '✂️' },
-    { id: 'glue', word: 'glue', pl: 'klej', emoji: '🧴' },
-    { id: 'crayon', word: 'crayon', pl: 'kredka', emoji: '🖍️' },
-    { id: 'marker', word: 'marker', pl: 'marker', emoji: '🖊️' },
-    { id: 'clock', word: 'clock', pl: 'zegar', emoji: '🕒' },
-    { id: 'computer', word: 'computer', pl: 'komputer', emoji: '💻' },
-    { id: 'map', word: 'map', pl: 'mapa', emoji: '🗺️' },
-    { id: 'globe', word: 'globe', pl: 'globus', emoji: '🌍' },
-    { id: 'calendar', word: 'calendar', pl: 'kalendarz', emoji: '🗓️' },
-    { id: 'homework', word: 'homework', pl: 'praca domowa', emoji: '📝' },
-    { id: 'lesson', word: 'lesson', pl: 'lekcja', emoji: '📖' },
-    { id: 'playground', word: 'playground', pl: 'plac zabaw', emoji: '🛝' }
-  ]
-};
+import { CATEGORIES } from './vocabulary.js';
+import { loadStars, saveStars, resetStars } from './storage.js';
+import { speak, createRecognition } from './speech.js';
 
 const MODES = {
   listen: 'Listen & Match',
@@ -135,301 +8,338 @@ const MODES = {
   voice: 'Speak & Check'
 };
 
+const LEVEL_LABELS = {
+  easy: 'Łatwy',
+  medium: 'Średni',
+  hard: 'Trudny'
+};
+
 const state = {
   category: 'animals',
   mode: 'listen',
-  stars: Number(localStorage.getItem('english-adventure-stars') || 0),
+  level: 'easy',
+  stars: loadStars(),
   round: null,
-  currentFlashcardIndex: 0,
-  recognition: null
+  flashcardIndex: 0,
+  recognition: null,
+  answered: false,
+  lastWordId: null
 };
 
-const categoryTabs = document.getElementById('categoryTabs');
-const modeTabs = document.getElementById('modeTabs');
-const starsCount = document.getElementById('starsCount');
-const promptLabel = document.getElementById('promptLabel');
-const promptText = document.getElementById('promptText');
-const actionBtn = document.getElementById('actionBtn');
-const optionsEl = document.getElementById('options');
-const resultEl = document.getElementById('result');
-const nextBtn = document.getElementById('nextBtn');
+const $ = (selector) => document.querySelector(selector);
+const categoryTabs = $('#categoryTabs');
+const modeTabs = $('#modeTabs');
+const difficultySelect = $('#difficultySelect');
+const starsCount = $('#starsCount');
+const resetProgressBtn = $('#resetProgressBtn');
+const promptLabel = $('#promptLabel');
+const promptText = $('#promptText');
+const actionBtn = $('#actionBtn');
+const optionsEl = $('#options');
+const resultEl = $('#result');
+const nextBtn = $('#nextBtn');
+
+const requiredElements = {
+  categoryTabs, modeTabs, difficultySelect, starsCount, resetProgressBtn,
+  promptLabel, promptText, actionBtn, optionsEl, resultEl, nextBtn
+};
+
+function assertMarkup() {
+  const missing = Object.entries(requiredElements)
+    .filter(([, element]) => !element)
+    .map(([name]) => name);
+  if (missing.length) {
+    throw new Error(`Missing required page elements: ${missing.join(', ')}`);
+  }
+}
+
+function getWords() {
+  return CATEGORIES[state.category].filter((entry) => entry.level === state.level);
+}
+
+function setResult(message, kind = 'info') {
+  resultEl.textContent = message;
+  resultEl.dataset.kind = kind;
+}
 
 function updateStars() {
   starsCount.textContent = String(state.stars);
-  localStorage.setItem('english-adventure-stars', String(state.stars));
+  saveStars(state.stars);
 }
 
 function shuffle(items) {
   const array = [...items];
-  for (let i = array.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+  for (let index = array.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [array[index], array[swapIndex]] = [array[swapIndex], array[index]];
   }
   return array;
 }
 
-function normalizeWord(value) {
-  return String(value || '')
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z ]/g, '')
-    .replace(/\s+/g, ' ');
+function chooseWord(words) {
+  if (!words.length) return null;
+  const options = words.length > 1
+    ? words.filter((entry) => entry.id !== state.lastWordId)
+    : words;
+  const entry = options[Math.floor(Math.random() * options.length)];
+  state.lastWordId = entry.id;
+  return entry;
 }
 
-function getRandomEntry(items) {
-  return items[Math.floor(Math.random() * items.length)];
+function makeElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
 }
 
-function getChoiceOptions(correct, items) {
-  const others = items.filter((entry) => entry.id !== correct.id);
-  return shuffle([correct, ...shuffle(others).slice(0, 3)]);
+function stopRecognition() {
+  if (!state.recognition) return;
+  try {
+    state.recognition.stop();
+  } catch (error) {
+    // Recognition may already have stopped or failed.
+  }
+  state.recognition = null;
+}
+
+function removeFlashcard() {
+  $('.flashcard-box')?.remove();
 }
 
 function renderCategoryTabs() {
-  categoryTabs.innerHTML = '';
-
+  categoryTabs.replaceChildren();
   Object.keys(CATEGORIES).forEach((key) => {
-    const button = document.createElement('button');
+    const button = makeElement('button', `tab-btn${state.category === key ? ' active' : ''}`, `${key[0].toUpperCase()}${key.slice(1)}`);
     button.type = 'button';
-    button.className = `tab-btn ${state.category === key ? 'active' : ''}`;
-    button.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+    button.setAttribute('aria-pressed', String(state.category === key));
     button.addEventListener('click', () => {
       state.category = key;
-      state.currentFlashcardIndex = 0;
+      state.flashcardIndex = 0;
+      state.lastWordId = null;
       renderCategoryTabs();
       renderGame();
     });
-    categoryTabs.appendChild(button);
+    categoryTabs.append(button);
   });
 }
 
 function renderModeTabs() {
-  modeTabs.innerHTML = '';
-
+  modeTabs.replaceChildren();
   Object.entries(MODES).forEach(([key, label]) => {
-    const button = document.createElement('button');
+    const button = makeElement('button', `mode-btn${state.mode === key ? ' active' : ''}`, label);
     button.type = 'button';
-    button.className = `mode-btn ${state.mode === key ? 'active' : ''}`;
-    button.textContent = label;
+    button.setAttribute('aria-pressed', String(state.mode === key));
     button.addEventListener('click', () => {
       state.mode = key;
       renderModeTabs();
       renderGame();
     });
-    modeTabs.appendChild(button);
+    modeTabs.append(button);
   });
 }
 
-function speakWord(word) {
-  if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
-    resultEl.textContent = 'Voice playback is not supported in this browser.';
-    return;
-  }
-
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(word.word);
-  utterance.lang = 'en-US';
-  utterance.rate = 0.78;
-  utterance.pitch = 1.15;
-  window.speechSynthesis.speak(utterance);
-}
-
-function renderListenRound() {
-  const words = CATEGORIES[state.category];
-  const correct = getRandomEntry(words);
-  const choices = getChoiceOptions(correct, words);
-
-  state.round = { correct, choices };
-  promptLabel.textContent = 'Listen & Match';
-  promptText.textContent = `Find the word: ${correct.word}`;
-  actionBtn.textContent = '🔊 Hear it again';
-  actionBtn.onclick = () => speakWord(correct);
-  nextBtn.classList.add('hidden');
-  resultEl.textContent = 'Ready to play!';
+function renderChoices(correct, words) {
+  const alternatives = shuffle(words.filter((entry) => entry.id !== correct.id)).slice(0, 3);
+  const choices = shuffle([correct, ...alternatives]);
+  state.round = { correct, answered: false };
+  optionsEl.replaceChildren();
   optionsEl.classList.remove('hidden');
-  optionsEl.innerHTML = '';
 
   choices.forEach((entry) => {
-    const button = document.createElement('button');
+    const button = makeElement('button', 'option-btn');
     button.type = 'button';
-    button.className = 'option-btn';
-    button.setAttribute('aria-label', `Choose ${entry.word}`);
-    button.innerHTML = `
-      <span class="option-emoji">${entry.emoji}</span>
-      <span>${entry.word}</span>
-    `;
-    button.addEventListener('click', () => handleOptionAnswer(entry, button));
-    optionsEl.appendChild(button);
+    button.setAttribute('aria-label', `Wybierz: ${entry.word}, ${entry.pl}`);
+    const emoji = makeElement('span', 'option-emoji', entry.emoji);
+    emoji.setAttribute('aria-hidden', 'true');
+    button.append(emoji, makeElement('span', 'option-word', entry.word));
+    button.addEventListener('click', () => handleAnswer(entry, button));
+    optionsEl.append(button);
   });
 }
 
-function renderFlashcards() {
-  const words = CATEGORIES[state.category];
-  const item = words[state.currentFlashcardIndex % words.length];
+function renderListen() {
+  const words = getWords();
+  const correct = chooseWord(words);
+  if (!correct) return showError('Brak słówek na tym poziomie.');
 
-  state.round = { correct: item };
-  promptLabel.textContent = 'Flashcards';
-  promptText.textContent = 'Look, listen and repeat!';
-  actionBtn.textContent = '🔊 Hear it';
-  actionBtn.onclick = () => speakWord(item);
-  nextBtn.textContent = 'Next card';
-  nextBtn.classList.remove('hidden');
-  resultEl.textContent = `${item.pl} — ${item.word}`;
+  promptLabel.textContent = `Listen & Match · ${LEVEL_LABELS[state.level]}`;
+  promptText.textContent = 'Posłuchaj i wybierz właściwy obrazek!';
+  actionBtn.textContent = '🔊 Posłuchaj słowa';
+  actionBtn.onclick = () => speak(correct.word, setResult);
+  nextBtn.classList.add('hidden');
+  nextBtn.textContent = 'Następna runda';
+  state.answered = false;
+  setResult('Naciśnij głośnik, a potem wybierz odpowiedź.');
+  renderChoices(correct, words);
+}
+
+function renderFlashcard() {
+  const words = getWords();
+  if (!words.length) return showError('Brak słówek na tym poziomie.');
+  const entry = words[state.flashcardIndex % words.length];
+  state.round = { correct: entry };
+  promptLabel.textContent = `Fiszki · ${LEVEL_LABELS[state.level]}`;
+  promptText.textContent = 'Obejrzyj kartę, posłuchaj i powtórz!';
+  actionBtn.textContent = '🔊 Posłuchaj wymowy';
+  actionBtn.onclick = () => speak(entry.word, setResult);
+  optionsEl.replaceChildren();
   optionsEl.classList.add('hidden');
-  optionsEl.innerHTML = '';
+  removeFlashcard();
 
-  const card = document.createElement('div');
-  card.className = 'flashcard-box';
-  card.innerHTML = `
-    <div class="flashcard-emoji" aria-hidden="true">${item.emoji}</div>
-    <h3 class="flashcard-word">${item.word}</h3>
-    <p class="flashcard-translation">${item.pl}</p>
-  `;
-  optionsEl.parentElement.insertBefore(card, optionsEl);
+  const card = makeElement('section', 'flashcard-box');
+  card.setAttribute('aria-label', `${entry.word} — ${entry.pl}`);
+  const emoji = makeElement('div', 'flashcard-emoji', entry.emoji);
+  emoji.setAttribute('aria-hidden', 'true');
+  card.append(emoji, makeElement('h3', 'flashcard-word', entry.word), makeElement('p', 'flashcard-translation', entry.pl));
+  optionsEl.before(card);
 
+  setResult(`Słowo ${state.flashcardIndex + 1} z ${words.length}`);
+  nextBtn.textContent = 'Następna fiszka';
+  nextBtn.classList.remove('hidden');
   nextBtn.onclick = () => {
-    state.currentFlashcardIndex += 1;
-    const previousCard = document.querySelector('.flashcard-box');
-    if (previousCard) previousCard.remove();
-    renderFlashcards();
+    state.flashcardIndex = (state.flashcardIndex + 1) % words.length;
+    renderFlashcard();
   };
 }
 
-function stopRecognition() {
-  if (state.recognition) {
-    try {
-      state.recognition.stop();
-    } catch (error) {
-      // no-op: recognition can already be stopped
-    }
-    state.recognition = null;
-  }
+function renderVoice() {
+  const words = getWords();
+  const entry = chooseWord(words);
+  if (!entry) return showError('Brak słówek na tym poziomie.');
+
+  state.round = { correct: entry, answered: false };
+  promptLabel.textContent = `Speak & Check · ${LEVEL_LABELS[state.level]}`;
+  promptText.textContent = `Powiedz po angielsku: ${entry.word}`;
+  optionsEl.replaceChildren();
+  optionsEl.classList.add('hidden');
+  removeFlashcard();
+  nextBtn.classList.add('hidden');
+  nextBtn.textContent = 'Następne słowo';
+  actionBtn.textContent = '🎙️ Nagraj odpowiedź';
+  actionBtn.onclick = startVoiceRecognition;
+  setResult('Naciśnij przycisk i powiedz słowo. Mikrofon uruchamia się dopiero po Twoim kliknięciu.');
 }
 
-function startVoiceQuiz() {
-  const words = CATEGORIES[state.category];
-  const correct = getRandomEntry(words);
-
-  state.round = { correct };
-  promptLabel.textContent = 'Speak & Check';
-  promptText.textContent = `Say: ${correct.word}`;
-  actionBtn.textContent = '🎙️ Try another word';
-  actionBtn.onclick = startVoiceQuiz;
-  resultEl.textContent = 'Allow microphone access, then say the word in English.';
-  nextBtn.classList.add('hidden');
-  optionsEl.classList.add('hidden');
-  optionsEl.innerHTML = '';
-
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    resultEl.textContent = 'Speech recognition is not supported in this browser. Try Chrome or Edge.';
+function startVoiceRecognition() {
+  stopRecognition();
+  const recognition = createRecognition();
+  if (!recognition) {
+    setResult('Rozpoznawanie mowy nie jest obsługiwane w tej przeglądarce. Możesz ćwiczyć z fiszkami.', 'error');
     return;
   }
 
-  const recognition = new SpeechRecognition();
   state.recognition = recognition;
-  recognition.lang = 'en-US';
-  recognition.interimResults = false;
-  recognition.maxAlternatives = 1;
+  recognition.onresult = (event) => {
+    const transcript = event.results?.[0]?.[0]?.transcript?.trim() || '';
+    const expected = state.round?.correct?.word || '';
+    const normalized = (value) => value.toLocaleLowerCase('en-US').replace(/[^a-z ]/g, '').trim().replace(/\s+/g, ' ');
+    const heard = normalized(transcript);
+    const target = normalized(expected);
+    const correct = heard === target || ` ${heard} `.includes(` ${target} `);
+    state.round.answered = true;
+    if (correct) {
+      state.stars += 1;
+      updateStars();
+      setResult(`Świetnie! Usłyszałem „${expected}”. ⭐`, 'success');
+    } else {
+      setResult(`Dobra próba! Usłyszałem „${transcript}”. Spróbuj jeszcze raz.`, 'info');
+    }
+    nextBtn.textContent = correct ? 'Następne słowo' : 'Spróbuj ponownie';
+    nextBtn.classList.remove('hidden');
+    nextBtn.onclick = correct ? renderGame : startVoiceRecognition;
+  };
+  recognition.onerror = (event) => {
+    state.recognition = null;
+    const messages = {
+      'not-allowed': 'Brak dostępu do mikrofonu. Sprawdź uprawnienia przeglądarki.',
+      'no-speech': 'Nie wykryto głosu. Spróbuj powiedzieć słowo głośniej.',
+      'audio-capture': 'Nie znaleziono mikrofonu. Sprawdź urządzenie.'
+    };
+    setResult(messages[event.error] || 'Nie udało się rozpoznać mowy. Spróbuj ponownie.', 'error');
+  };
+  recognition.onend = () => {
+    if (state.recognition === recognition) state.recognition = null;
+  };
 
   try {
     recognition.start();
-    resultEl.textContent = 'Listening... say the word out loud!';
+    setResult('Słucham… powiedz słowo po angielsku.');
   } catch (error) {
-    resultEl.textContent = 'Microphone could not start. Try again.';
     state.recognition = null;
-    return;
+    setResult('Nie udało się uruchomić mikrofonu. Spróbuj ponownie.', 'error');
   }
-
-  recognition.onresult = (event) => {
-    const transcript = Array.from(event.results)
-      .map((result) => result[0].transcript)
-      .join(' ');
-
-    const guessed = normalizeWord(transcript);
-    const target = normalizeWord(correct.word);
-
-    const isCorrect = guessed === target || guessed.includes(target) || target.includes(guessed);
-
-    if (isCorrect) {
-      state.stars += 1;
-      updateStars();
-      resultEl.textContent = `Brilliant! You said “${correct.word}”! ⭐`;
-    } else {
-      resultEl.textContent = `Good try! You said “${transcript}”. The answer is “${correct.word}”.`;
-    }
-
-    nextBtn.textContent = 'Next word';
-    nextBtn.classList.remove('hidden');
-    nextBtn.onclick = () => {
-      stopRecognition();
-      renderGame();
-    };
-  };
-
-  recognition.onerror = () => {
-    resultEl.textContent = 'I could not hear you clearly. Please try again.';
-    nextBtn.textContent = 'Try again';
-    nextBtn.classList.remove('hidden');
-    nextBtn.onclick = startVoiceQuiz;
-  };
-
-  recognition.onend = () => {
-    state.recognition = null;
-  };
 }
 
-function handleOptionAnswer(selected, buttonEl) {
-  if (!state.round || !state.round.correct) return;
-
-  const correct = state.round.correct;
-  const allButtons = [...document.querySelectorAll('.option-btn')];
-
-  allButtons.forEach((btn) => {
-    btn.disabled = true;
-  });
-
-  if (selected.id === correct.id) {
-    buttonEl.classList.add('correct');
+function handleAnswer(selected, button) {
+  if (!state.round || state.round.answered) return;
+  state.round.answered = true;
+  const correct = selected.id === state.round.correct.id;
+  optionsEl.querySelectorAll('button').forEach((choice) => { choice.disabled = true; });
+  if (correct) {
+    button.classList.add('correct');
     state.stars += 1;
     updateStars();
-    resultEl.textContent = 'Excellent! Great job! ⭐';
+    setResult('Brawo! Świetna odpowiedź! ⭐', 'success');
   } else {
-    buttonEl.classList.add('wrong');
-    const correctButton = allButtons.find((btn) => btn.getAttribute('aria-label') === `Choose ${correct.word}`);
-    if (correctButton) correctButton.classList.add('correct');
-    resultEl.textContent = `Good try! The correct answer is “${correct.word}”.`;
+    button.classList.add('wrong');
+    const correctButton = [...optionsEl.querySelectorAll('button')]
+      .find((choice) => choice.getAttribute('aria-label') === `Wybierz: ${state.round.correct.word}, ${state.round.correct.pl}`);
+    correctButton?.classList.add('correct');
+    setResult('Dobra próba! Zapamiętaj właściwe słowo i graj dalej.', 'info');
   }
-
-  nextBtn.textContent = 'Next round';
+  nextBtn.textContent = 'Następna runda';
   nextBtn.classList.remove('hidden');
   nextBtn.onclick = renderGame;
 }
 
-function renderGame() {
-  stopRecognition();
+function showError(message) {
+  setResult(message, 'error');
+  optionsEl.replaceChildren();
   nextBtn.classList.add('hidden');
-  optionsEl.classList.remove('hidden');
-
-  const existingFlashcard = document.querySelector('.flashcard-box');
-  if (existingFlashcard) {
-    existingFlashcard.remove();
-  }
-
-  if (state.mode === 'listen') {
-    renderListenRound();
-    return;
-  }
-
-  if (state.mode === 'flashcards') {
-    renderFlashcards();
-    return;
-  }
-
-  startVoiceQuiz();
 }
 
-renderCategoryTabs();
-renderModeTabs();
-updateStars();
-renderGame();
+function renderGame() {
+  stopRecognition();
+  removeFlashcard();
+  nextBtn.classList.add('hidden');
+  optionsEl.classList.remove('hidden');
+  state.round = null;
+  if (state.mode === 'listen') renderListen();
+  else if (state.mode === 'flashcards') renderFlashcard();
+  else renderVoice();
+}
+
+function bindControls() {
+  difficultySelect.value = state.level;
+  difficultySelect.addEventListener('change', () => {
+    state.level = difficultySelect.value;
+    state.flashcardIndex = 0;
+    state.lastWordId = null;
+    renderGame();
+  });
+
+  resetProgressBtn.addEventListener('click', () => {
+    if (!window.confirm('Czy na pewno wyzerować wszystkie zdobyte gwiazdki?')) return;
+    state.stars = 0;
+    resetStars();
+    updateStars();
+    setResult('Postęp został wyzerowany. Zaczynamy od nowa!');
+  });
+}
+
+function init() {
+  assertMarkup();
+  renderCategoryTabs();
+  renderModeTabs();
+  bindControls();
+  updateStars();
+  renderGame();
+}
+
+try {
+  init();
+} catch (error) {
+  console.error('English Adventure failed to initialize:', error);
+  document.body.innerHTML = '<main class="startup-error"><h1>Nie udało się uruchomić gry</h1><p>Odśwież stronę. Jeśli problem wraca, skontaktuj się z opiekunem aplikacji.</p></main>';
+}

@@ -1,56 +1,68 @@
 # English Adventure
 
-English Adventure to darmowa, przeglądarkowa aplikacja edukacyjna dla dzieci w wieku 7–9 lat. Uczy angielskiego przez krótkie gry, duże ikony, prosty interfejs i odsłuchiwanie wymowy.
+**Kolorowa gra przeglądarkowa do nauki angielskich słówek dla dzieci w wieku 7–9 lat.** Krótkie rundy, przyjazna informacja zwrotna i trzy sposoby ćwiczenia pomagają uczyć się we własnym tempie.
 
-**Demo:** https://pytsone.github.io/ang/  ·  **Repozytorium:** https://github.com/pytsone/ang
+**Demo:** https://pytsone.github.io/ang/ · **Kod:** https://github.com/pytsone/ang
 
 ## Funkcje
 
-- **120 słówek** w czterech kategoriach: Animals, Colors, Food i School (po 30 słów w każdej).
-- **Listen & Match** — wybierz obrazek odpowiadający słowu.
-- **Flashcards** — ucz się słowa, tłumaczenia i wymowy.
-- **Speak & Check** — spróbuj wypowiedzieć słowo; rozpoznawanie mowy zależy od obsługi przeglądarki.
-- Gwiazdki za poprawne odpowiedzi, zapisywane lokalnie w przeglądarce.
-- Responsywny, kolorowy interfejs na telefon, tablet i komputer.
+- **120 haseł** w kategoriach Animals, Colors, Food i School (po 30 na kategorię).
+- Trzy poziomy trudności: łatwy, średni i trudny; każdy poziom zawiera 10 słów z wybranej kategorii.
+- **Listen & Match:** wybieraj spośród czterech odpowiedzi.
+- **Flashcards:** przeglądaj angielskie słowo, tłumaczenie i emoji.
+- **Speak & Check:** wypowiedz słowo; funkcja zależy od obsługi Web Speech API i dostępu do mikrofonu.
+- Gwiazdki za poprawne odpowiedzi, lokalny zapis postępu i przycisk resetowania.
+- Interfejs responsywny, obsługa klawiatury, czytelne stany odpowiedzi i komunikaty błędów.
 
 ## Technologie
 
-HTML, CSS, JavaScript, Web Speech API (`speechSynthesis` i opcjonalnie `SpeechRecognition`) oraz `localStorage`. Projekt nie wymaga serwera ani konta użytkownika.
+HTML, CSS, JavaScript ES modules, Web Speech API i `localStorage`. Bez frameworka, zależności npm, serwera i kont użytkowników.
 
-## Uruchomienie
+## Uruchomienie lokalne
 
-Otwórz `index.html` w nowoczesnej przeglądarce albo opublikuj pliki w GitHub Pages. W trybie Speak & Check przeglądarka może poprosić o dostęp do mikrofonu; rozpoznawanie mowy nie jest dostępne we wszystkich przeglądarkach. Odtwarzanie głosu korzysta z głosu angielskiego zainstalowanego w systemie lub przeglądarce.
+GitHub Pages obsługuje moduły ES. Do lokalnego uruchomienia użyj statycznego serwera (moduły ES często nie działają przez `file://`):
 
-## Pliki
+```bash
+python3 -m http.server 8000
+```
+
+Następnie otwórz `http://localhost:8000`. Możesz też opublikować repozytorium przez **Settings → Pages → Deploy from a branch → main / root**.
+
+## Struktura
 
 ```text
-ang/
-├── index.html   # struktura i punkty wejścia aplikacji
-├── style.css    # responsywny interfejs i animacje
-├── app.js       # słownik, quizy i logika gry
+.
+├── index.html       # dostępny markup i kontrolki
+├── style.css        # responsywny styl
+├── app.js           # renderowanie widoków i przepływ gry
+├── vocabulary.js    # dane słów i walidacja zestawów
+├── storage.js      # bezpieczny zapis i reset gwiazdek
+├── speech.js        # synteza oraz rozpoznawanie mowy
 └── README.md
 ```
 
-Słownictwo znajduje się na początku `app.js` w obiekcie `CATEGORIES`. Nowe hasła można dodawać, zachowując pola `id`, `word`, `pl` i `emoji`.
+## Dodawanie słówek
+
+W `vocabulary.js` dopisz wiersz w formacie `id|english|polski|emoji`. Pozycje 1–10 są łatwe, 11–20 średnie, a 21–30 trudne. `id` musi być unikalne w obrębie kategorii. Walidacja sprawdza liczbę haseł i unikalność identyfikatorów przy imporcie modułu.
 
 ## Opis do portfolio
 
-**English Adventure — gra edukacyjna do nauki angielskich słówek**
+**English Adventure — aplikacja edukacyjna do nauki angielskiego**
 
-Zaprojektowałem i zbudowałem lekką aplikację webową dla dzieci w wieku 7–9 lat. Zamiast długich lekcji oferuje krótkie aktywności w trzech trybach oraz zestaw 120 słówek w czterech tematycznych kategoriach. Interfejs wykorzystuje duże, czytelne elementy, wspierające ilustracje emoji i natychmiastową, pozytywną informację zwrotną. Wymowę odtwarza Web Speech API, a wynik zapisuje się lokalnie bez rejestracji.
+Zaprojektowałem i wdrożyłem statyczną aplikację webową dla dzieci w wieku 7–9 lat. Zawiera 120 haseł w czterech kategoriach, trzy poziomy trudności i trzy tryby ćwiczeń: quiz obrazkowy, fiszki oraz opcjonalny quiz głosowy. Zadbano o responsywny interfejs, komunikaty zachęcające do ponownej próby, obsługę ograniczeń przeglądarkowych API oraz lokalny zapis i reset wyniku. Kod podzielono na moduły danych, logiki aplikacji, mowy i pamięci lokalnej.
 
-**Zakres prac:** projekt i implementacja interfejsu, model danych słownictwa, logika quizów i fiszek, integracja API przeglądarki, zapis postępów oraz wdrożenie statycznej aplikacji w GitHub Pages.
+**Zakres:** projekt UX/UI, model słownictwa, logika quizów, integracja API przeglądarki, odporność na błędy, dostępność podstawowa i wdrożenie GitHub Pages.
 
-**Technologie:** HTML, CSS, JavaScript, Web Speech API, localStorage, GitHub Pages.
+**Stack:** HTML · CSS · JavaScript ES modules · Web Speech API · localStorage · GitHub Pages.
+
+## Ograniczenia i prywatność
+
+Wynik jest przechowywany wyłącznie w lokalnej przeglądarce i nie synchronizuje się między urządzeniami. Aplikacja nie wysyła danych konta, bo nie ma kont użytkowników. Tryb rozpoznawania mowy wymaga kompatybilnej przeglądarki i zgody na mikrofon; niektóre przeglądarki mogą przetwarzać mowę przez swoje usługi. Synteza głosu zależy od głosów dostępnych na urządzeniu.
 
 ## Roadmapa
 
-- układanka literowa Word Builder,
-- podział słownictwa na poziomy trudności i krótkie lekcje,
-- odznaki i podsumowanie postępów,
-- własne ilustracje i dodatkowe zestawy tematyczne,
-- testy dostępności i użyteczności z udziałem opiekunów/nauczycieli.
-
-## Ograniczenia
-
-Postęp jest zapisany tylko w danej przeglądarce i urządzeniu. `SpeechRecognition` nie jest jednakowo obsługiwany przez przeglądarki, a rozpoznawanie i synteza mowy mogą wymagać internetu lub odpowiedniego głosu systemowego.
+- tryb Word Builder z układaniem liter,
+- podsumowanie wyników z podziałem na kategorię i poziom,
+- możliwość powtarzania trudnych słów,
+- testy automatyczne oraz testy dostępności,
+- własne ilustracje i dodatkowe kategorie.
