@@ -1,121 +1,56 @@
 # English Adventure
 
-English Adventure to prosty, kolorowy projekt edukacyjny stworzony dla dzieci w wieku 7–9 lat. Aplikacja pomaga uczyć się angielskiego poprzez krótkie, angażujące gry, duże ikony, prosty interfejs i odtwarzanie poprawnej wymowy przez przeglądarkę.
+English Adventure to darmowa, przeglądarkowa aplikacja edukacyjna dla dzieci w wieku 7–9 lat. Uczy angielskiego przez krótkie gry, duże ikony, prosty interfejs i odsłuchiwanie wymowy.
 
-Live demo: https://pytsone.github.io/ang/
+**Demo:** https://pytsone.github.io/ang/  ·  **Repozytorium:** https://github.com/pytsone/ang
 
-## Opis projektu
+## Funkcje
 
-Celem projektu było stworzenie prostego, bezpłatnego narzędzia do nauki słownictwa angielskiego w formie gry, która:
-
-- jest łatwa w obsłudze dla dzieci,
-- nie wymaga logowania ani backendu,
-- działa w przeglądarce na komputerze, tablecie i telefonie,
-- wykorzystuje darmowe technologie dostępne w każdej nowoczesnej przeglądarce,
-- buduje pozytywne doświadczenie ucznia poprzez motywację i natychmiastową nagrodę.
-
-Aplikacja została zaprojektowana zgodnie z potrzebami młodszych dzieci: krótkie zadania, duże przyciski, wyraźne kolory, łatwe słownictwo i szybka informacja zwrotna.
-
-## Główne funkcje
-
-### 1. Kategoria słówek
-W projekcie dostępne są cztery podstawowe sekcje:
-
-- Animals
-- Colors
-- Food
-- School
-
-Każda kategoria zawiera zestaw prostych słów i odpowiadających im emoji.
-
-### 2. Tryby gry
-Aplikacja zawiera trzy główne tryby:
-
-- Listen & Match — użytkownik słucha słowa po angielsku i wybiera poprawną odpowiedź.
-- Flashcards — karta ze słowem, tłumaczeniem i emoji.
-- Speak & Check — użytkownik mówi do mikrofonu, a aplikacja próbuje rozpoznać wypowiedź za pomocą Web Speech API.
-
-### 3. Motywacja i nagrody
-- licznik gwiazdek,
-- zapis postępu w localStorage,
-- szybkie feedback po poprawnej odpowiedzi,
-- brak negatywnego „wywołania do porażki” — zamiast tego prosty komunikat typu „Try again!”.
+- **120 słówek** w czterech kategoriach: Animals, Colors, Food i School (po 30 słów w każdej).
+- **Listen & Match** — wybierz obrazek odpowiadający słowu.
+- **Flashcards** — ucz się słowa, tłumaczenia i wymowy.
+- **Speak & Check** — spróbuj wypowiedzieć słowo; rozpoznawanie mowy zależy od obsługi przeglądarki.
+- Gwiazdki za poprawne odpowiedzi, zapisywane lokalnie w przeglądarce.
+- Responsywny, kolorowy interfejs na telefon, tablet i komputer.
 
 ## Technologie
 
-- HTML5
-- CSS3
-- JavaScript (vanilla)
-- Web Speech API (`speechSynthesis`)
-- Google Fonts
-- `localStorage` do zapisywania postępu
+HTML, CSS, JavaScript, Web Speech API (`speechSynthesis` i opcjonalnie `SpeechRecognition`) oraz `localStorage`. Projekt nie wymaga serwera ani konta użytkownika.
 
-## Struktura projektu
+## Uruchomienie
+
+Otwórz `index.html` w nowoczesnej przeglądarce albo opublikuj pliki w GitHub Pages. W trybie Speak & Check przeglądarka może poprosić o dostęp do mikrofonu; rozpoznawanie mowy nie jest dostępne we wszystkich przeglądarkach. Odtwarzanie głosu korzysta z głosu angielskiego zainstalowanego w systemie lub przeglądarce.
+
+## Pliki
 
 ```text
 ang/
-├── index.html
-├── style.css
-├── app.js
-├── README.md
-└── .gitignore
+├── index.html   # struktura i punkty wejścia aplikacji
+├── style.css    # responsywny interfejs i animacje
+├── app.js       # słownik, quizy i logika gry
+└── README.md
 ```
 
-## Uruchomienie lokalnie
+Słownictwo znajduje się na początku `app.js` w obiekcie `CATEGORIES`. Nowe hasła można dodawać, zachowując pola `id`, `word`, `pl` i `emoji`.
 
-1. Pobierz repozytorium.
-2. Otwórz folder projektu.
-3. Uruchom plik `index.html` w przeglądarce.
+## Opis do portfolio
 
-Alternatywnie można wdrożyć projekt na GitHub Pages.
+**English Adventure — gra edukacyjna do nauki angielskich słówek**
 
-## GitHub Pages
+Zaprojektowałem i zbudowałem lekką aplikację webową dla dzieci w wieku 7–9 lat. Zamiast długich lekcji oferuje krótkie aktywności w trzech trybach oraz zestaw 120 słówek w czterech tematycznych kategoriach. Interfejs wykorzystuje duże, czytelne elementy, wspierające ilustracje emoji i natychmiastową, pozytywną informację zwrotną. Wymowę odtwarza Web Speech API, a wynik zapisuje się lokalnie bez rejestracji.
 
-Po podłączeniu GitHub Pages z głównej gałęzi projekt będzie dostępny pod adresem:
+**Zakres prac:** projekt i implementacja interfejsu, model danych słownictwa, logika quizów i fiszek, integracja API przeglądarki, zapis postępów oraz wdrożenie statycznej aplikacji w GitHub Pages.
 
-https://pytsone.github.io/ang/
+**Technologie:** HTML, CSS, JavaScript, Web Speech API, localStorage, GitHub Pages.
 
-## Dlaczego ten projekt jest dobrym projektem do portfolio?
+## Roadmapa
 
-English Adventure to projekt, który pokazuje kilka ważnych umiejętności:
+- układanka literowa Word Builder,
+- podział słownictwa na poziomy trudności i krótkie lekcje,
+- odznaki i podsumowanie postępów,
+- własne ilustracje i dodatkowe zestawy tematyczne,
+- testy dostępności i użyteczności z udziałem opiekunów/nauczycieli.
 
-- projektowanie UX dla dzieci,
-- tworzenie prostych, ale atrakcyjnych interfejsów,
-- pracę z przeglądarkowymi API,
-- implementację grywalizacji i feedbacku,
-- tworzenie aplikacji edukacyjnej, która ma realną wartość użytkową.
+## Ograniczenia
 
-Dodatkowo projekt jest dobrym przykładem pracy w małym, czytelnym projekcie front-endowym, który można rozwijać dalej bez dużej infrastruktury.
-
-## Plan rozwoju
-
-### MVP już gotowe
-- 4 kategorie słówek
-- 3 tryby gry
-- odtwarzanie głosu
-- zapis postępu
-- responsywny layout
-
-### Kolejne etapy rozwoju
-- Word Builder — układanka liter do tworzenia słów
-- lepsze ilustracje zamiast emoji
-- poziomy trudności i progresja dziecka
-- system odznak i certyfikatów za ukończenie kategorii
-- panel statystyk dla rodzica
-- więcej słów i zdań do nauki
-- dźwiękowe efekty i animacje po poprawnej odpowiedzi
-
-## Zastosowanie w praktyce
-
-Projekt może być rozwijany jako:
-
-- mini aplikacja edukacyjna dla dzieci,
-- narzędzie do nauki słówek na lekcjach,
-- demo technologiczne do portfolio,
-- baza do dalszej rozbudowy o gameplay i bardziej zaawansowane mechaniki.
-
-## Podsumowanie
-
-English Adventure łączy w sobie elementy nauki, zabawy i technologii webowej. To prosty, ale bardzo czytelny projekt, który dobrze pokazuje, jak można zbudować angażujące rozwiązanie edukacyjne bez dużych kosztów i bez backendu.
-
-Jest to projekt, który można łatwo rozwijać, rozszerzać o nowe funkcje i wykorzystywać jako materiał do portfolio front-end developera.
+Postęp jest zapisany tylko w danej przeglądarce i urządzeniu. `SpeechRecognition` nie jest jednakowo obsługiwany przez przeglądarki, a rozpoznawanie i synteza mowy mogą wymagać internetu lub odpowiedniego głosu systemowego.
